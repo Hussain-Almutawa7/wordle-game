@@ -9,3 +9,21 @@ body {
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
 }
+
+.board-guess {
+  display: flex;
+  flex-wrap: wrap;
+  width: 380px;
+  justify-content: center;
+}
+
+.sqr {
+  width: 16%;
+  aspect-ratio: 1/1;
+  border: 2px solid rgb(80, 80, 80);
+  font-size: 64px;
+  text-align: center;
+  cursor: pointer;
+  margin: 3px 3px;
+  border-radius: 5px;
+}
