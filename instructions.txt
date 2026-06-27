@@ -1,9 +1,0 @@
-I choose the wordle game.
-I will need variables, functions, loops, and maybe array iterators.
-
-As a user I ... so that ...
-- As a user I want to see on-screen keyboard and track the letter I wrote easily.
-- As a user I want to have the ability to choose between clicking or typing for the choosen letter.
-- As a user I want the keyboard letter to change on the screen based on my guess so I can know which letter is correct.
-- As a user I want the game to check if my guessed word is valid so that I cannot enter random letters or words that are not in the word list.
-- As a user I want the game to reject my submitted guess if it is not correct so I can play onky using valid word.

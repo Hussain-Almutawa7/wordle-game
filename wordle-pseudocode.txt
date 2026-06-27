@@ -1,0 +1,39 @@
+Wordle Game Pseudocode:
+
+I may need:
+- Variable to store user guess - userGuess
+- Variable to store the word to compare - wordCompare
+- Varibale to store the number of attempts - attemptNumber
+- Array to store list of secret words - secretWords
+- Function to do the game logic - gameLogic() it may splits into multiple functions holding multiple parts of the game like comparing the word etc
+- Function to change the css styles based on user progression - changeStyle()
+- Function to reset the game - gameReset()
+- Click event listener to on the keyboard displayed on screen
+- Keydown event listener to give the user option type from his keyboard instead of clicking
+
+Game Flow:
+Create a list to hold the key words
+Create a board with 6 rows and 5 empty spaces
+Create on screen keyboard
+Set the number of attempts to 6
+
+Repeat while the user does not get the word correct:
+- Ask the user to enter letters by clicking the on-screen keyboard or typing on the physical keyboard.
+- Add each letter to the current guess.
+- Allow the user to delete letters before submitting.
+
+When Submitting the word:
+- Change the letter colors based on the user guess gray, yellow, or green on the board and the on screen keyboard
+    . Green indicating the letter and the place is correct
+    . Yellow indicating the letter is correct but the place is wrong
+    . Gray indicating the letter and the place is wrong
+- Deny the attempt if the user word does not match the list
+- If used all his attempts show the loose message and what is the correct word
+Show success message if the user get the word right
+
+As a user I ... so that ...
+- As a user I want to see on-screen keyboard and track the letter I wrote easily.
+- As a user I want to have the ability to choose between clicking or typing for the choosen letter.
+- As a user I want the keyboard letter to change on the screen based on my guess so I can know which letter is correct.
+- As a user I want the game to check if my guessed word is valid so that I cannot enter random letters or words that are not in the word list.
+- As a user I want the game to reject invalid words so that I can only submit words from the word list.
