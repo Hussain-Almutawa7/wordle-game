@@ -1,100 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wordle Game</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <script src="app.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <head>
-        <h1>Guess the Correct Word</h1>
-        <h2 id="message">Message</h2>
+      <h1>Guess the Correct Word</h1>
+      <h2 id="message">Message</h2>
     </head>
-    
+
     <section>
-        <div class="board-guess">
-            <div class="sqr" id="0"></div>
-            <div class="sqr" id="1"></div>
-            <div class="sqr" id="2"></div>
-            <div class="sqr" id="3"></div>
-            <div class="sqr" id="4"></div>
+      <div class="board-guess">
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
 
-            <div class="sqr" id="5"></div>
-            <div class="sqr" id="6"></div>
-            <div class="sqr" id="7"></div>
-            <div class="sqr" id="8"></div>
-            <div class="sqr" id="9"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
 
-            <div class="sqr" id="10"></div>
-            <div class="sqr" id="11"></div>
-            <div class="sqr" id="12"></div>
-            <div class="sqr" id="13"></div>
-            <div class="sqr" id="14"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
 
-            <div class="sqr" id="15"></div>
-            <div class="sqr" id="16"></div>
-            <div class="sqr" id="17"></div>
-            <div class="sqr" id="18"></div>
-            <div class="sqr" id="19"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
 
-            <div class="sqr" id="20"></div>
-            <div class="sqr" id="21"></div>
-            <div class="sqr" id="22"></div>
-            <div class="sqr" id="23"></div>
-            <div class="sqr" id="24"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
 
-            <div class="sqr" id="25"></div>
-            <div class="sqr" id="26"></div>
-            <div class="sqr" id="27"></div>
-            <div class="sqr" id="28"></div>
-            <div class="sqr" id="29"></div>
-        </div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+        <div class="sqr"></div>
+      </div>
     </section>
 
     <section>
-        <div class="keyboard">
-            <div class="keyboard-row">
-                <button class="keyboard-key">Q</button>
-                <button class="keyboard-key">W</button>
-                <button class="keyboard-key">E</button>
-                <button class="keyboard-key">R</button>
-                <button class="keyboard-key">T</button>
-                <button class="keyboard-key">Y</button>
-                <button class="keyboard-key">U</button>
-                <button class="keyboard-key">I</button>
-                <button class="keyboard-key">O</button>
-                <button class="keyboard-key">P</button>
-            </div>
-            
-            <div class="keyboard-row">
-                <button class="keyboard-key">A</button>
-                <button class="keyboard-key">S</button>
-                <button class="keyboard-key">D</button>
-                <button class="keyboard-key">F</button>
-                <button class="keyboard-key">G</button>
-                <button class="keyboard-key">H</button>
-                <button class="keyboard-key">J</button>
-                <button class="keyboard-key">K</button>
-                <button class="keyboard-key">L</button>
-            </div>
-
-            <div class="keyboard-row">
-                <button class="keyboard-key">ENTER</button>
-                <button class="keyboard-key">Z</button>
-                <button class="keyboard-key">X</button>
-                <button class="keyboard-key">C</button>
-                <button class="keyboard-key">V</button>
-                <button class="keyboard-key">B</button>
-                <button class="keyboard-key">N</button>
-                <button class="keyboard-key">M</button>
-                <button class="keyboard-key">&#9003;</button>
-            </div>
+      <div class="keyboard">
+        <div class="keyboard-row">
+          <button class="keyboard-key">Q</button>
+          <button class="keyboard-key">W</button>
+          <button class="keyboard-key">E</button>
+          <button class="keyboard-key">R</button>
+          <button class="keyboard-key">T</button>
+          <button class="keyboard-key">Y</button>
+          <button class="keyboard-key">U</button>
+          <button class="keyboard-key">I</button>
+          <button class="keyboard-key">O</button>
+          <button class="keyboard-key">P</button>
         </div>
+
+        <div class="keyboard-row">
+          <button class="keyboard-key">A</button>
+          <button class="keyboard-key">S</button>
+          <button class="keyboard-key">D</button>
+          <button class="keyboard-key">F</button>
+          <button class="keyboard-key">G</button>
+          <button class="keyboard-key">H</button>
+          <button class="keyboard-key">J</button>
+          <button class="keyboard-key">K</button>
+          <button class="keyboard-key">L</button>
+        </div>
+
+        <div class="keyboard-row">
+          <button class="keyboard-key">&#8629;</button>
+          <button class="keyboard-key">Z</button>
+          <button class="keyboard-key">X</button>
+          <button class="keyboard-key">C</button>
+          <button class="keyboard-key">V</button>
+          <button class="keyboard-key">B</button>
+          <button class="keyboard-key">N</button>
+          <button class="keyboard-key">M</button>
+          <button class="keyboard-key">&#9003;</button>
+        </div>
+      </div>
     </section>
 
     <button id="reset-btn">Reset Game</button>
-    
-</body>
+  </body>
 </html>
