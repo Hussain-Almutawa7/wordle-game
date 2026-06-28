@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wordle Game</title>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
   </head>
   <body>
     <head>
@@ -81,7 +81,7 @@
         </div>
 
         <div class="keyboard-row">
-          <button class="keyboard-key">&#8629;</button>
+          <button class="keyboard-key" id="enter">&#8629;</button>
           <button class="keyboard-key">Z</button>
           <button class="keyboard-key">X</button>
           <button class="keyboard-key">C</button>
@@ -89,7 +89,7 @@
           <button class="keyboard-key">B</button>
           <button class="keyboard-key">N</button>
           <button class="keyboard-key">M</button>
-          <button class="keyboard-key">&#9003;</button>
+          <button class="keyboard-key" id="del">&#9003;</button>
         </div>
       </div>
     </section>
