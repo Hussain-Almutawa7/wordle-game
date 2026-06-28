@@ -47,12 +47,20 @@ keyRow.forEach(row => {
     buttons.forEach(btn => {
         btn.addEventListener("click", () => {
             if(btn.id === "del") {
-                return // Logic delete will be here
+                if(currentBoxIndex === 0) return;
+
+                currentBoxIndex--;
+                boxes[currentBoxIndex].textContent = "";
+                userGuess = userGuess.slice(0, -1);
+                return
             }
 
             if(btn.id === "enter") {
                 return // Logic insert will be here
             }
+
+            if(currentBoxIndex === 5) return;
+
             userGuess += btn.textContent
             boxes[currentBoxIndex].textContent = btn.textContent
             currentBoxIndex++;
