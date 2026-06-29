@@ -1,29 +1,27 @@
 const secretWords = [
-  "APPLE",
-  "GRAPE",
-  "HOUSE",
-  "LIGHT",
-  "SOUND",
-  "MUSIC",
-  "GREEN",
-  "BLACK",
-  "WHITE",
-  "BROWN",
-  "SMILE",
-  "DREAM",
-  "CLOUD",
-  "STONE",
-  "RIVER",
-  "BEACH",
-  "HEART",
-  "WORLD",
-  "NIGHT",
-  "SMART",
-  "HAPPY",
-  "SWEET",
-  "TIGER",
-  "ZEBRA",
-  "TRAIN"
+  "ABOUT", "ABOVE", "ACTOR", "ACUTE", "ADMIT", "ADOPT", "ADULT", "AFTER", "AGAIN", "AGENT",
+  "AGREE", "AHEAD", "ALARM", "ALBUM", "ALERT", "ALIKE", "ALIVE", "ALLOW", "ALONE", "ALONG",
+  "ALTER", "AMONG", "ANGER", "ANGLE", "ANGRY", "APART", "APPLE", "APPLY", "ARENA", "ARGUE",
+  "ARISE", "ARRAY", "ARROW", "ASIDE", "ASSET", "AUDIO", "AUDIT", "AVOID", "AWARD", "AWARE",
+  "AWFUL", "BADLY", "BAKER", "BASES", "BASIC", "BASIS", "BEACH", "BEARD", "BEAST", "BEGIN",
+  "BEING", "BELOW", "BENCH", "BIRTH", "BLACK", "BLADE", "BLAME", "BLIND", "BLOCK", "BLOOD",
+  "BOARD", "BOAST", "BONUS", "BOOST", "BOUND", "BRAIN", "BRAND", "BREAD", "BREAK", "BREED",
+  "BRICK", "BRIDE", "BRIEF", "BRING", "BROAD", "BROKE", "BROWN", "BRUSH", "BUILD", "BUILT",
+  "BUNCH", "BUYER", "CABLE", "CALMLY", "CAMEL", "CAMERA", "CAMP", "CANAL", "CANDY", "CANON",
+  "CARGO", "CAROL", "CARRY", "CARVE", "CASEY", "CATCH", "CATER", "CAUSE", "CEDAR", "CHAIN",
+  "CHAIR", "CHALK", "CHAMP", "CHANT", "CHAOS", "CHARM", "CHART", "CHASE", "CHEAP", "CHEAT",
+  "CHECK", "CHEEK", "CHEER", "CHEF", "CHESS", "CHEST", "CHEW", "CHIEF", "CHILD", "CHILE",
+  "CHILL", "CHINA", "CHIPS", "CHOIR", "CHOSE", "CHUCK", "CHUNK", "CHURN", "CIGAR", "CINDY",
+  "CIRCU", "CITE", "CIVIC", "CIVIL", "CLAIM", "CLARA", "CLARK", "CLASH", "CLASP", "CLASS",
+  "CLEAN", "CLEAR", "CLEFT", "CLERK", "CLICK", "CLIFF", "CLIMB", "CLING", "CLINIC", "CLINT",
+  "CLOCK", "CLONE", "CLOSE", "CLOTH", "CLOUD", "CLOVE", "CLOWN", "CLUCK", "CLUMP", "COACH",
+  "COAST", "COBRA", "COCOA", "CODED", "CODER", "CODES", "CODEX", "COILS", "COINS", "COKE",
+  "COLTS", "COLUM", "COMBS", "COMBO", "COMES", "COMET", "COMFY", "COMIC", "COMMA", "COMMO",
+  "COMPS", "CONCH", "CONDO", "CONED", "CONES", "CONGA", "CONGO", "CONIC", "CONKY", "COOCH",
+  "COOED", "COOEE", "COOEY", "COOFS", "COOKS", "COOKY", "COOLS", "COOLY", "COOMB", "COOMS",
+  "COOMY", "COOPS", "COOPT", "COOST", "COOTS", "COOZE", "COPAL", "COPAY", "COPED", "COPEN",
+  "COPER", "COPES", "COPRA", "COPSE", "COPSY", "COQUI", "CORAL", "CORAM", "CORBE", "CORBY",
+  "PLANT", "REACT", "SOUND", "STONE", "THEIR", "THERE", "TRAIN", "UNDER", "WATER", "WORLD"
 ];
 
 let userGuess = "";
@@ -96,16 +94,14 @@ document.addEventListener("keydown", e => {
 
     if(key === " ") e.preventDefault(); // btn.blur is enough but just for guard
 
-    let found = key.match(/[A-Z]/gi)
+    let found = /^[A-Z]$/i.test(key);
 
-    if(!found || found.length > 1) {
-        return
-    } else {
-        if(currentBoxIndex === rowEnd) return;
-        userGuess += key.toUpperCase()
-        boxes[currentBoxIndex].textContent = key.toUpperCase()
-        currentBoxIndex++;
-    }
+    if(!found) return;
+    if(currentBoxIndex === rowEnd) return;
+    
+    userGuess += key.toUpperCase()
+    boxes[currentBoxIndex].textContent = key.toUpperCase()
+    currentBoxIndex++;
 });
 
 function deleteLetter() {
