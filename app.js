@@ -169,8 +169,16 @@ function checkWordAndColor(word, correctWord) {
 
 function checkKeyboardColor(letter, style) {
     keyboard.forEach(btn => {
-        if(btn.textContent === letter)
-            // btn.classList.remove("correct-letter-place", "correct-letter", "wrong");
+        if(btn.textContent === letter) {
+            if(btn.classList.contains("correct-letter-place")) return;
+
+            if(style === "correct-letter-place") {
+                btn.classList.remove("correct-letter");
+                btn.classList.add(style)
+            }
+
+            btn.classList.remove("correct-letter");
             btn.classList.add(style)
+        }
     });
 }
