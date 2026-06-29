@@ -68,10 +68,22 @@ button:active {
     background-color: green;
 }
 
+.correct-letter-place:hover {
+    background-color: green;
+}
+
 .correct-letter {
     background-color: goldenrod; /*Maybe gold is better I will check later*/
 }
 
+.correct-letter:hover {
+    background-color: goldenrod;
+}
+
 .wrong {
-    background-color: rgb(108, 108, 108);
+    background-color: rgb(80, 80, 80);
+}
+
+.wrong:hover {
+    background-color: rgb(80, 80, 80);
 }

@@ -50,6 +50,7 @@ keyRow.forEach(row => {
     buttons.forEach(btn => {
         btn.addEventListener("click", () => {
             gameLogic();
+            btn.blur();
         });
 
         function gameLogic() {
@@ -75,6 +76,36 @@ keyRow.forEach(row => {
 
 resetBtn.addEventListener("click", () => {
     resetGame();
+});
+
+document.addEventListener("keydown", e => {
+    if(numAttempts === 0) return
+
+    let key = String(e.key);
+
+    if(key === "Backspace") {
+        deleteLetter()
+        return
+    }
+
+    if(key === "Enter") {
+        insertWord(userGuess);
+        e.preventDefault() // btn.blur is enough but just for guard
+        return;
+    }
+
+    if(key === " ") e.preventDefault(); // btn.blur is enough but just for guard
+
+    let found = key.match(/[A-Z]/gi)
+
+    if(!found || found.length > 1) {
+        return
+    } else {
+        if(currentBoxIndex === rowEnd) return;
+        userGuess += key.toUpperCase()
+        boxes[currentBoxIndex].textContent = key.toUpperCase()
+        currentBoxIndex++;
+    }
 });
 
 function deleteLetter() {
