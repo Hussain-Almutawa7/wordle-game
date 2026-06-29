@@ -15,14 +15,14 @@ body {
   flex-wrap: wrap;
   width: 380px;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .sqr {
   width: 16%;
   aspect-ratio: 1/1;
   border: 2px solid rgb(80, 80, 80);
-  font-size: 64px;
+  font-size: 50px;
   text-align: center;
   margin: 3px 3px;
   border-radius: 5px;
@@ -32,7 +32,7 @@ body {
     background-color: rgb(150, 150, 150);
     color: white;
     /* font-weight: bold; */
-    padding: 20px 15px;
+    padding: 15px;
     font-size: 24px;
     border: none;
     margin-bottom: 10px;
@@ -50,7 +50,7 @@ body {
     padding: 10px 15px;
     border-radius: 5px;
     font-weight: bold;
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: 24px;
     cursor: pointer;
     background-color:rgb(143, 188, 143);

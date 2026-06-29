@@ -40,6 +40,7 @@ const keyRow = document.querySelectorAll(".keyboard-row");
 const boxes = document.querySelectorAll(".sqr");
 const message = document.querySelector("#message");
 const resetBtn = document.querySelector("#reset-btn");
+const keyboard = document.querySelectorAll(".keyboard-key");
 
 console.log(wordCompare)
 
@@ -137,6 +138,10 @@ function resetGame() {
 
     boxes.forEach(box => {
         box.classList.remove("correct-letter-place", "correct-letter", "wrong");
+    });
+
+    keyboard.forEach(btn => {
+        btn.classList.remove("correct-letter-place", "correct-letter", "wrong");
     })
 
     boxes.forEach(box => {
@@ -151,10 +156,21 @@ function checkWordAndColor(word, correctWord) {
 
         if(correctWord[i] === letter) {
             boxes[boxIndex].classList.add("correct-letter-place");
+            checkKeyboardColor(letter, "correct-letter-place")
         } else if(correctWord.includes(letter)) {
             boxes[boxIndex].classList.add("correct-letter")
+            checkKeyboardColor(letter, "correct-letter")
         } else {
             boxes[boxIndex].classList.add("wrong");
+            checkKeyboardColor(letter, "wrong")
         }
     }
+}
+
+function checkKeyboardColor(letter, style) {
+    keyboard.forEach(btn => {
+        if(btn.textContent === letter)
+            // btn.classList.remove("correct-letter-place", "correct-letter", "wrong");
+            btn.classList.add(style)
+    });
 }
