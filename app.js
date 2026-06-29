@@ -35,6 +35,7 @@ let currentBoxIndex = 0;
 const keyRow = document.querySelectorAll(".keyboard-row");
 const boxes = document.querySelectorAll(".sqr");
 const message = document.querySelector("#message");
+const resetBtn = document.querySelector("#reset-btn");
 
 keyRow.forEach(row => {
     const buttons = row.querySelectorAll(".keyboard-key");
@@ -69,6 +70,10 @@ keyRow.forEach(row => {
     });
 });
 
+resetBtn.addEventListener("click", () => {
+    resetLogic();
+});
+
 function deleteLetter() {
     if(currentBoxIndex === 0) return;
     
@@ -92,9 +97,6 @@ function insertWord(guess) {
             break;
         }
 
-        console.log(wordCompare)
-        console.log(guess)
-
         if (guess !== wordCompare) {
             numAttempts--;
             message.textContent = "Invalid Guess Try again"
@@ -109,4 +111,16 @@ function insertWord(guess) {
 
     if(guess === wordCompare)
         message.textContent = "You win!"
+}
+
+function resetLogic() {
+    numAttempts = 6
+    currentBoxIndex = 0
+    userGuess = ""
+    randomPicker = Math.floor(Math.random() * secretWords.length)
+    wordCompare = secretWords[randomPicker];
+
+    boxes.forEach(box => {
+        box.textContent = "";
+    });
 }
