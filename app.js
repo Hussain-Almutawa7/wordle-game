@@ -30,7 +30,11 @@ let userGuess = "";
 let randomPicker = Math.floor(Math.random() * secretWords.length)
 let wordCompare = secretWords[randomPicker];
 let numAttempts = 6;
+
 let currentBoxIndex = 0;
+let currentRow = 0;
+let rowStart = currentRow * 5;
+let rowEnd = rowStart + 5;
 
 const keyRow = document.querySelectorAll(".keyboard-row");
 const boxes = document.querySelectorAll(".sqr");
@@ -60,7 +64,7 @@ keyRow.forEach(row => {
                 return
             }
 
-            if(currentBoxIndex === 5) return;
+            if(currentBoxIndex === rowEnd) return;
 
             userGuess += btn.textContent
             boxes[currentBoxIndex].textContent = btn.textContent
@@ -71,21 +75,22 @@ keyRow.forEach(row => {
 });
 
 resetBtn.addEventListener("click", () => {
-    resetLogic();
+    resetGame();
 });
 
 function deleteLetter() {
-    if(currentBoxIndex === 0) return;
+    if(currentBoxIndex === rowStart) return;
     
     currentBoxIndex--;
     boxes[currentBoxIndex].textContent = "";
     userGuess = userGuess.slice(0, -1);
 }
 
+
 function insertWord(guess) {
     let arrCount = secretWords.length;
 
-    if(currentBoxIndex !== 5) return;
+    if(currentBoxIndex !== rowEnd) return;
 
     for (const word of secretWords) {
         if (guess !== word) {
@@ -94,15 +99,21 @@ function insertWord(guess) {
 
         if(arrCount === 0) {
             message.textContent = "Invalid word, does not contain in the list";
-            break;
+            return
         }
+    }
 
-        if (guess !== wordCompare) {
-            numAttempts--;
-            message.textContent = "Invalid Guess Try again"
-            console.log(numAttempts)
-            break;
-        }
+    
+    if (guess !== wordCompare) {
+        numAttempts--;
+        message.textContent = "Invalid Guess Try again"
+
+        currentRow++;
+        rowStart = currentRow * 5;
+        rowEnd = rowStart + 5;
+
+        currentBoxIndex = rowStart;
+        userGuess = "";
     }
 
     if(numAttempts === 0) {
@@ -113,12 +124,17 @@ function insertWord(guess) {
         message.textContent = "You win!"
 }
 
-function resetLogic() {
+function resetGame() {
     numAttempts = 6
     currentBoxIndex = 0
     userGuess = ""
+    currentRow = 0;
+    rowStart = currentRow * 5;
+    rowEnd = rowStart + 5;
+    
     randomPicker = Math.floor(Math.random() * secretWords.length)
     wordCompare = secretWords[randomPicker];
+    message.textContent = "";
 
     boxes.forEach(box => {
         box.textContent = "";
