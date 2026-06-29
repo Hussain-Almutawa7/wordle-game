@@ -63,3 +63,15 @@ body {
 button:active {
     opacity: 0.7;
 }
+
+.correct-letter-place {
+    background-color: green;
+}
+
+.correct-letter {
+    background-color: goldenrod; /*Maybe gold is better I will check later*/
+}
+
+.wrong {
+    background-color: rgb(108, 108, 108);
+}
