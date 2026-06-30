@@ -14,7 +14,7 @@ let currentRow = 0;
 let rowStart = currentRow * 5;
 let rowEnd = rowStart + 5;
 
-const keyRow = document.querySelectorAll(".keyboard-row");
+const keyRows = document.querySelectorAll(".keyboard-row");
 const boxes = document.querySelectorAll(".sqr");
 const message = document.querySelector("#message");
 const resetBtn = document.querySelector("#reset-btn");
@@ -22,7 +22,7 @@ const keyboard = document.querySelectorAll(".keyboard-key");
 
 console.log(wordCompare)
 
-keyRow.forEach(row => {
+keyRows.forEach(row => {
     const buttons = row.querySelectorAll(".keyboard-key");
 
     buttons.forEach(btn => {
@@ -46,6 +46,8 @@ keyRow.forEach(row => {
 
             userGuess += btn.textContent
             boxes[currentBoxIndex].textContent = btn.textContent
+            addLetterStyle(boxes[currentBoxIndex])
+            animate(box[currentBoxIndex], "pop")
             currentBoxIndex++;
         }
 
@@ -82,6 +84,7 @@ document.addEventListener("keydown", e => {
     userGuess += key.toUpperCase()
     boxes[currentBoxIndex].textContent = key.toUpperCase()
     addLetterStyle(boxes[currentBoxIndex])
+    animate(boxes[currentBoxIndex], "pop")
     currentBoxIndex++;
 });
 
@@ -91,6 +94,7 @@ function deleteLetter() {
     currentBoxIndex--;
     boxes[currentBoxIndex].textContent = "";
     removeLetterStyle(boxes[currentBoxIndex])
+    removeAnimation(boxes[currentBoxIndex], "pop")
     userGuess = userGuess.slice(0, -1);
 }
 
@@ -195,4 +199,16 @@ function addLetterStyle(box) {
 
 function removeLetterStyle(box) {
     box.classList.remove("box-style");
+}
+
+function animate(box, animation) {
+    box.classList.add(animation)
+
+    box.addEventListener("animationend", () => {
+        box.classList.remove(animation);
+    }, {once: true})
+}
+
+function removeAnimation(box, animation) {
+    box.classList.remove(animation);
 }
