@@ -27,11 +27,6 @@ keyRows.forEach(row => {
 
     buttons.forEach(btn => {
         btn.addEventListener("click", () => {
-            gameLogic();
-            btn.blur();
-        });
-
-        function gameLogic() {
             if(btn.id === "del") {
                 deleteLetter()
                 return
@@ -47,10 +42,10 @@ keyRows.forEach(row => {
             userGuess += btn.textContent
             boxes[currentBoxIndex].textContent = btn.textContent
             addLetterStyle(boxes[currentBoxIndex])
-            animate(box[currentBoxIndex], "pop")
+            animate(boxes[currentBoxIndex], "pop")
             currentBoxIndex++;
-        }
-
+            btn.blur();
+        });
     });
 });
 
@@ -111,6 +106,7 @@ function insertWord(guess) {
 
         if(arrCount === 0) {
             message.textContent = "Invalid, word is not in list";
+            shakeRow()
             return
         }
     }
@@ -131,10 +127,14 @@ function insertWord(guess) {
 
     if(numAttempts === 0) {
         message.textContent = "You loose"
+        return
+        
     }
 
-    if(guess === wordCompare)
+    if(guess === wordCompare) {
         message.textContent = "You win!"
+        return
+    }
 }
 
 function resetGame() {
@@ -160,20 +160,27 @@ function resetGame() {
 }
 
 function checkWordAndColor(word, correctWord) {
+    const currentRow = rowStart;
+    
     for(let i = 0; i<word.length; i++) {
-        let letter = word[i]
-        let boxIndex = rowStart + i;
+        setTimeout(() => {
+            let letter = word[i]
+            let boxIndex = currentRow + i;
 
-        if(correctWord[i] === letter) {
-            boxes[boxIndex].classList.add("correct-letter-place");
-            checkKeyboardColor(letter, "correct-letter-place")
-        } else if(correctWord.includes(letter)) {
-            boxes[boxIndex].classList.add("correct-letter")
-            checkKeyboardColor(letter, "correct-letter")
-        } else {
-            boxes[boxIndex].classList.add("wrong");
-            checkKeyboardColor(letter, "wrong")
-        }
+            animate(boxes[boxIndex], "flip")
+
+            if(correctWord[i] === letter) {
+                boxes[boxIndex].classList.add("correct-letter-place");
+                checkKeyboardColor(letter, "correct-letter-place")
+            } else if(correctWord.includes(letter)) {
+                boxes[boxIndex].classList.add("correct-letter")
+                checkKeyboardColor(letter, "correct-letter")
+            } else {
+                boxes[boxIndex].classList.add("wrong");
+                checkKeyboardColor(letter, "wrong")
+            }
+            
+        }, i*300)
     }
 }
 
@@ -211,4 +218,10 @@ function animate(box, animation) {
 
 function removeAnimation(box, animation) {
     box.classList.remove(animation);
+}
+
+function shakeRow() {
+    for(let i = rowStart; i<rowEnd; i++) {
+        animate(boxes[i], "shake")
+    }
 }
