@@ -21,6 +21,7 @@ const boxes = document.querySelectorAll(".sqr");
 const message = document.querySelector("#message");
 const resetBtn = document.querySelector("#reset-btn");
 const keyboard = document.querySelectorAll(".keyboard-key");
+const theme = document.querySelector(".js-change-color")
 
 console.log(wordCompare)
 
@@ -53,10 +54,6 @@ keyRows.forEach(row => {
     });
 });
 
-resetBtn.addEventListener("click", () => {
-    resetGame();
-});
-
 document.addEventListener("keydown", e => {
     if(numAttempts === 0 || gameFlag) return
 
@@ -85,6 +82,18 @@ document.addEventListener("keydown", e => {
     addLetterStyle(boxes[currentBoxIndex])
     animate(boxes[currentBoxIndex], "pop")
     currentBoxIndex++;
+});
+
+resetBtn.addEventListener("click", () => {
+    resetGame();
+});
+
+theme.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark");
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+
+    isDarkMode.textContent = isDark ? "Light Mode" : "Dark Mode";
 });
 
 function deleteLetter() {

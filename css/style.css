@@ -199,3 +199,18 @@ body {
 button:active {
   opacity: 0.7;
 }
+
+.align-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.align-head h2 {
+    margin: 0;
+}
+
+/*Here will be the light mode styles*/
+body.dark {
+    background-color: white;
+    color: black;
+}
