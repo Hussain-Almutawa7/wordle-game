@@ -134,3 +134,64 @@ button:active {
         transform: rotateX(90deg);
     }
 }
+
+.instructions {
+    max-width: 800px;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid rgb(80, 80, 80);
+    border-radius: 10px;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.instructions h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.instructions ul {
+    padding-left: 20px;
+}
+
+.color-guide p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.example-box {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: goldenrod;
+}
+
+.gray {
+    background-color: rgb(80, 80, 80);
+}
+
+.play-btn {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color:rgb(143, 188, 143);
+}
