@@ -14,6 +14,8 @@ let currentRow = 0;
 let rowStart = currentRow * 5;
 let rowEnd = rowStart + 5;
 
+let gameFlag = false;
+
 const keyRows = document.querySelectorAll(".keyboard-row");
 const boxes = document.querySelectorAll(".sqr");
 const message = document.querySelector("#message");
@@ -27,6 +29,8 @@ keyRows.forEach(row => {
 
     buttons.forEach(btn => {
         btn.addEventListener("click", () => {
+            if(numAttempts === 0 || gameFlag) return;
+            
             if(btn.id === "del") {
                 deleteLetter()
                 return
@@ -54,7 +58,7 @@ resetBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", e => {
-    if(numAttempts === 0) return
+    if(numAttempts === 0 || gameFlag) return
 
     let key = String(e.key);
 
@@ -125,14 +129,16 @@ function insertWord(guess) {
         userGuess = "";
     }
 
-    if(numAttempts === 0) {
-        message.textContent = "You loose"
+    if(numAttempts === 0 || gameFlag) {
+        message.textContent = "You loose";
+        gameFlag = true;
         return
         
     }
 
     if(guess === wordCompare) {
         message.textContent = "You win!"
+        gameFlag = true;
         return
     }
 }
@@ -144,6 +150,7 @@ function resetGame() {
     currentRow = 0;
     rowStart = currentRow * 5;
     rowEnd = rowStart + 5;
+    gameFlag = false;
 
     randomPicker = Math.floor(Math.random() * secretWords.length)
     wordCompare = secretWords[randomPicker];
