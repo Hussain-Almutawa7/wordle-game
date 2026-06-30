@@ -66,6 +66,7 @@ button:active {
 
 .correct-letter-place {
     background-color: green;
+    transition: 0.15s;
 }
 
 .correct-letter-place:hover {
@@ -74,6 +75,7 @@ button:active {
 
 .correct-letter {
     background-color: goldenrod; /*Maybe gold is better I will check later*/
+    transition: 0.15s;
 }
 
 .correct-letter:hover {
@@ -82,8 +84,14 @@ button:active {
 
 .wrong {
     background-color: rgb(80, 80, 80);
+    transition: 0.15s;
 }
 
 .wrong:hover {
     background-color: rgb(80, 80, 80);
+}
+
+.box-style {
+    transition: 0.15s;
+    border: solid white 2px;
 }
