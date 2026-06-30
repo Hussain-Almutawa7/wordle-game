@@ -1,13 +1,13 @@
 body {
-    background-color: rgb(20,20,20);
-    color: white;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0;
-    font-family: 'Courier New', Courier, monospace;
+  background-color: rgb(20, 20, 20);
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  font-family: cursive;
 }
 
 .board-guess {
@@ -22,176 +22,180 @@ body {
   width: 16%;
   aspect-ratio: 1/1;
   border: 2px solid rgb(80, 80, 80);
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
   margin: 3px 3px;
   border-radius: 5px;
 }
 
 .keyboard-key {
-    background-color: rgb(150, 150, 150);
-    color: white;
-    /* font-weight: bold; */
-    padding: 15px;
-    font-size: 24px;
-    border: none;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.15s;
+  background-color: rgb(150, 150, 150);
+  color: white;
+  padding: 15px;
+  font-size: 24px;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.15s;
 }
 
 .keyboard-key:hover {
-    background-color: rgb(120, 120, 120);
-}
-
-#reset-btn {
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-top: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    background-color:rgb(143, 188, 143);
-}
-
-#reset-btn:hover {
-    background-color: rgb(123, 168, 123);
-}
-
-button:active {
-    opacity: 0.7;
+  background-color: rgb(120, 120, 120);
 }
 
 .correct-letter-place {
-    background-color: green;
-    transition: 0.15s;
+  background-color: green;
+  transition: 0.15s;
 }
 
 .correct-letter-place:hover {
-    background-color: green;
+  background-color: green;
 }
 
 .correct-letter {
-    background-color: goldenrod; /*Maybe gold is better I will check later*/
-    transition: 0.15s;
+  background-color: goldenrod; /*Maybe gold is better I will check later*/
+  transition: 0.15s;
 }
 
 .correct-letter:hover {
-    background-color: goldenrod;
+  background-color: goldenrod;
 }
 
 .wrong {
-    background-color: rgb(80, 80, 80);
-    transition: 0.15s;
+  background-color: rgb(80, 80, 80);
+  transition: 0.15s;
 }
 
 .wrong:hover {
-    background-color: rgb(80, 80, 80);
+  background-color: rgb(80, 80, 80);
 }
 
 .box-style {
-    transition: 0.15s;
-    border: solid white 2px;
+  transition: 0.15s;
+  border: solid white 2px;
 }
 
 .pop {
-    animation: pop 0.12s ease-in-out;
+  animation: pop 0.12s ease-in-out;
 }
 
 @keyframes pop {
-    50% {
-        transform: scale(1.15);
-    }
+  50% {
+    transform: scale(1.15);
+  }
 }
 
 .shake {
-    animation: shake 0.35s ease-in-out;
+  animation: shake 0.35s ease-in-out;
 }
 
 @keyframes shake {
-    20% {
-        transform: translateX(-8px);
-    }
-    40% {
-        transform: translateX(8px);
-    }
-    60% {
-        transform: translateX(-6px);
-    }
-    80% {
-        transform: translateX(6px);
-    }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
 }
 
 .flip {
-    animation: flip 0.5s ease-in-out;
+  animation: flip 0.5s ease-in-out;
 }
 
 @keyframes flip {
-    50% {
-        transform: rotateX(90deg);
-    }
+  50% {
+    transform: rotateX(90deg);
+  }
 }
 
-.instructions {
-    max-width: 800px;
-    margin: 20px;
-    padding: 20px;
-    border: 2px solid rgb(80, 80, 80);
-    border-radius: 10px;
-    background-color: rgb(30, 30, 30);
-    color: white;
-    text-align: left;
-    line-height: 1.6;
+.instructions-1 {
+  max-width: 800px;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid rgb(80, 80, 80);
+  border-radius: 10px;
+  background-color: rgb(30, 30, 30);
+  color: white;
+  line-height: 2;
+}
+
+.instructions-2 {
+  text-align: left;
 }
 
 .instructions h2 {
-    text-align: center;
-    margin-top: 0;
+  text-align: center;
+  margin-top: 0;
 }
 
 .instructions ul {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 .color-guide p {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .example-box {
-    width: 35px;
-    height: 35px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
 }
 
 .green {
-    background-color: green;
+  background-color: green;
 }
 
 .yellow {
-    background-color: goldenrod;
+  background-color: goldenrod;
 }
 
 .gray {
-    background-color: rgb(80, 80, 80);
+  background-color: rgb(80, 80, 80);
+}
+
+.align-btn {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }
 
 .play-btn {
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-top: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    background-color:rgb(143, 188, 143);
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: darkgreen;
+  color: white;
+  letter-spacing: 1.5px;
+  transition: 0.15s;
+}
+
+.play-btn:hover {
+    padding: 8px;
+}
+
+.play-btn:active {
+    opacity: 0.7;
+}
+
+button:active {
+  opacity: 0.7;
 }
