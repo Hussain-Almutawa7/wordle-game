@@ -106,7 +106,7 @@ function insertWord(guess) {
         }
 
         if(arrCount === 0) {
-            message.textContent = "Invalid word, does not contain in the list";
+            message.textContent = "Invalid, word is not in list";
             return
         }
     }
@@ -115,7 +115,7 @@ function insertWord(guess) {
     
     if (guess !== wordCompare) {
         numAttempts--;
-        message.textContent = `Invalid guess ${numAttempts} left`
+        message.textContent = `Invalid guess ${numAttempts} attempts left`
 
         currentRow++;
         rowStart = currentRow * 5;
@@ -146,15 +146,12 @@ function resetGame() {
     message.textContent = "";
 
     boxes.forEach(box => {
-        box.classList.remove("correct-letter-place", "correct-letter", "wrong");
+        box.classList.remove("correct-letter-place", "correct-letter", "wrong", "box-style");
+        box.textContent = ""
     });
 
     keyboard.forEach(btn => {
         btn.classList.remove("correct-letter-place", "correct-letter", "wrong");
-    })
-
-    boxes.forEach(box => {
-        box.textContent = "";
     });
 }
 
