@@ -218,14 +218,22 @@ function checkKeyboardColor(letter, style) {
     keyboard.forEach(btn => {
         if(btn.textContent === letter) {
             if(btn.classList.contains("correct-letter-place")) return;
-
+    
             if(style === "correct-letter-place") {
-                btn.classList.remove("correct-letter");
-                btn.classList.add(style)
+                btn.classList.remove("correct-letter", "wrong");
+                btn.classList.add(style);
+                return;
             }
-
-            btn.classList.remove("correct-letter");
-            btn.classList.add(style)
+    
+            if(style === "correct-letter") {
+                btn.classList.remove("wrong");
+                btn.classList.add(style);
+                return;
+            }
+    
+            if(!btn.classList.contains("correct-letter")) {
+                btn.classList.add(style);
+            }
         }
     });
 }
