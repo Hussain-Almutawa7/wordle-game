@@ -19,8 +19,11 @@ let gameFlag = false;
 const keyRows = document.querySelectorAll(".keyboard-row");
 const boxes = document.querySelectorAll(".sqr");
 const message = document.querySelector("#message");
+const popMessage = document.querySelector("#message-pop");
 const resetBtn = document.querySelector(".reset-btn");
+const playAgainBtn = document.querySelector(".play-again");
 const keyboard = document.querySelectorAll(".keyboard-key");
+const isHidden = document.querySelector(".hidden");
 
 const defeatSound = new Audio("./sounds/defeat-sound.mp3");
 const errorSound =  new Audio("./sounds/error-sound.mp3");
@@ -96,6 +99,11 @@ resetBtn.addEventListener("click", () => {
     resetGame();
 });
 
+playAgainBtn.addEventListener("click", () => {
+    resetGame();
+    isHidden.classList.toggle("hidden");
+})
+
 function deleteLetter() {
     if(currentBoxIndex === rowStart) return;
     
@@ -141,7 +149,8 @@ function insertWord(guess) {
     }
 
     if(numAttempts === 0 || gameFlag) {
-        message.textContent = `You loose, the word was ${wordCompare}`;
+        popMessage.textContent = `You've lost, Word: ${wordCompare}`;
+        isHidden.classList.toggle("hidden");
         gameFlag = true;
         playSound(defeatSound)
         return
@@ -149,7 +158,8 @@ function insertWord(guess) {
     }
 
     if(guess === wordCompare) {
-        message.textContent = "You win!"
+        popMessage.textContent = "You've Won!"
+        isHidden.classList.toggle("hidden");
         playSound(victorySound);
         gameFlag = true;
         return
@@ -168,6 +178,7 @@ function resetGame() {
     randomPicker = Math.floor(Math.random() * secretWords.length)
     wordCompare = secretWords[randomPicker];
     message.textContent = "";
+    popMessage.textContent = "";
 
     boxes.forEach(box => {
         box.classList.remove("correct-letter-place", "correct-letter", "wrong", "box-style");
