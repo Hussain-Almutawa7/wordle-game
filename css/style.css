@@ -124,6 +124,7 @@ body {
   background-color: rgb(30, 30, 30);
   color: white;
   line-height: 2;
+  box-shadow: 7px 7px 10px rgba(255,255,255,0.3) ;
 }
 
 .instructions-2 {
@@ -249,6 +250,7 @@ body.light .instructions-1 {
   border: 2px solid rgb(80, 80, 80);
   background-color: rgb(230, 230, 230);
   color: black;
+  box-shadow: 7px 7px 10px rgba(0,0,0,0.3) ;
 }
 
 body.light .keyboard-key {
