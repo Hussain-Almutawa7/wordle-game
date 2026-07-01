@@ -225,3 +225,12 @@ body.light .instructions-1 {
   background-color: rgb(230, 230, 230);
   color: black;
 }
+
+body.light .keyboard-key {
+  background-color: rgb(230, 230, 230);;
+  color: black;
+}
+
+body.light .keyboard-key:hover {
+  background-color: rgb(210, 210, 210);
+}
