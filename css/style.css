@@ -54,7 +54,7 @@ body {
 }
 
 .correct-letter {
-  background-color: goldenrod; /*Maybe gold is better I will check later*/
+  background-color: goldenrod;
   transition: 0.15s;
 }
 
@@ -73,7 +73,7 @@ body {
 
 .box-style {
   transition: 0.15s;
-  border: solid white 2px;
+  border: solid white 3px;
 }
 
 .pop {
@@ -216,7 +216,7 @@ body.light {
 }
 
 body.light .box-style {
-    border: solid black 2px;
+    border: solid black 3px;
     transition: 0.15s;
 }
 

@@ -22,6 +22,12 @@ const message = document.querySelector("#message");
 const resetBtn = document.querySelector("#reset-btn");
 const keyboard = document.querySelectorAll(".keyboard-key");
 
+const defeatSound = new Audio("./sounds/defeat-sound.mp3");
+const errorSound =  new Audio("./sounds/error-sound.mp3");
+const keyboardSound =  new Audio("./sounds/keyboard-click.mp3");
+const successSound = new Audio("./sounds/success-sound.mp3");
+const victorySound = new Audio("./sounds/victory-sound.mp3");
+
 console.log(wordCompare)
 
 keyRows.forEach(row => {
@@ -49,6 +55,7 @@ keyRows.forEach(row => {
             animate(boxes[currentBoxIndex], "pop")
             currentBoxIndex++;
             btn.blur();
+            playSound(keyboardSound)
         });
     });
 });
@@ -66,6 +73,7 @@ document.addEventListener("keydown", e => {
     if(key === "Enter") {
         insertWord(userGuess);
         e.preventDefault() // btn.blur is enough but just for extra guard
+        playSound(keyboardSound)
         return;
     }
 
@@ -81,6 +89,7 @@ document.addEventListener("keydown", e => {
     addLetterStyle(boxes[currentBoxIndex])
     animate(boxes[currentBoxIndex], "pop")
     currentBoxIndex++;
+    playSound(keyboardSound)
 });
 
 resetBtn.addEventListener("click", () => {
@@ -95,6 +104,7 @@ function deleteLetter() {
     removeLetterStyle(boxes[currentBoxIndex])
     removeAnimation(boxes[currentBoxIndex], "pop")
     userGuess = userGuess.slice(0, -1);
+    playSound(keyboardSound)
 }
 
 
@@ -127,17 +137,20 @@ function insertWord(guess) {
 
         currentBoxIndex = rowStart;
         userGuess = "";
+        playSound(keyboardSound)
     }
 
     if(numAttempts === 0 || gameFlag) {
         message.textContent = `You loose, the word was ${wordCompare}`;
         gameFlag = true;
+        playSound(defeatSound)
         return
         
     }
 
     if(guess === wordCompare) {
         message.textContent = "You win!"
+        playSound(victorySound);
         gameFlag = true;
         return
     }
@@ -179,6 +192,7 @@ function checkWordAndColor(word, correctWord) {
             if(correctWord[i] === letter) {
                 boxes[boxIndex].classList.add("correct-letter-place");
                 checkKeyboardColor(letter, "correct-letter-place")
+                playSound(successSound)
             } else if(correctWord.includes(letter)) {
                 boxes[boxIndex].classList.add("correct-letter")
                 checkKeyboardColor(letter, "correct-letter")
@@ -231,4 +245,10 @@ function shakeRow() {
     for(let i = rowStart; i<rowEnd; i++) {
         animate(boxes[i], "shake")
     }
+    playSound(errorSound)
+}
+
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play();
 }
