@@ -19,7 +19,7 @@ let gameFlag = false;
 const keyRows = document.querySelectorAll(".keyboard-row");
 const boxes = document.querySelectorAll(".sqr");
 const message = document.querySelector("#message");
-const resetBtn = document.querySelector("#reset-btn");
+const resetBtn = document.querySelector(".reset-btn");
 const keyboard = document.querySelectorAll(".keyboard-key");
 
 const defeatSound = new Audio("./sounds/defeat-sound.mp3");

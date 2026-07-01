@@ -234,3 +234,33 @@ body.light .keyboard-key {
 body.light .keyboard-key:hover {
   background-color: rgb(210, 210, 210);
 }
+
+body.light .correct-letter-place {
+  background-color: green;
+  transition: 0.15s;
+  color: white;
+}
+
+body.light .correct-letter-place:hover {
+  background-color: green;
+}
+
+body.light .correct-letter {
+  background-color: goldenrod;
+  transition: 0.15s;
+  color: white;
+}
+
+body.light .correct-letter:hover {
+  background-color: goldenrod;
+}
+
+body.light .wrong {
+  background-color: rgb(140, 140, 140);
+  transition: 0.15s;
+  color: white;
+}
+
+body.light .wrong:hover {
+  background-color: rgb(140, 140, 140);
+}
