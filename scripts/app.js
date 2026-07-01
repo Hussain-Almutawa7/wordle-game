@@ -23,15 +23,13 @@ const popMessage = document.querySelector("#message-pop");
 const resetBtn = document.querySelector(".reset-btn");
 const playAgainBtn = document.querySelector(".play-again");
 const keyboard = document.querySelectorAll(".keyboard-key");
-const isHidden = document.querySelector(".hidden");
+const popUp = document.querySelector(".pop-up");
 
 const defeatSound = new Audio("./sounds/defeat-sound.mp3");
 const errorSound =  new Audio("./sounds/error-sound.mp3");
 const keyboardSound =  new Audio("./sounds/keyboard-click.mp3");
 const successSound = new Audio("./sounds/success-sound.mp3");
 const victorySound = new Audio("./sounds/victory-sound.mp3");
-
-console.log(wordCompare)
 
 keyRows.forEach(row => {
     const buttons = row.querySelectorAll(".keyboard-key");
@@ -101,7 +99,7 @@ resetBtn.addEventListener("click", () => {
 
 playAgainBtn.addEventListener("click", () => {
     resetGame();
-    isHidden.classList.toggle("hidden");
+    popUp.classList.add("hidden");
 })
 
 function deleteLetter() {
@@ -150,16 +148,15 @@ function insertWord(guess) {
 
     if(numAttempts === 0 || gameFlag) {
         popMessage.textContent = `You've lost, Word: ${wordCompare}`;
-        isHidden.classList.toggle("hidden");
+        popUp.classList.remove("hidden");
         gameFlag = true;
         playSound(defeatSound)
         return
-        
     }
 
     if(guess === wordCompare) {
         popMessage.textContent = "You've Won!"
-        isHidden.classList.toggle("hidden");
+        popUp.classList.remove("hidden");
         playSound(victorySound);
         gameFlag = true;
         return
@@ -179,6 +176,7 @@ function resetGame() {
     wordCompare = secretWords[randomPicker];
     message.textContent = "";
     popMessage.textContent = "";
+    popUp.classList.add("hidden")
 
     boxes.forEach(box => {
         box.classList.remove("correct-letter-place", "correct-letter", "wrong", "box-style");

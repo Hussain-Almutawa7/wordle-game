@@ -212,27 +212,25 @@ button:active {
 
 .pop-up {
   position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
   z-index: 1000;
-}
-
-.visible {
-  display: inline-block;
-  transition: 0.15s;
-}
-
-.hidden {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pop-up .pop {
   border: 2px solid rgb(80, 80, 80);
   background-color: rgb(30, 30, 30);
   color: white;
-  padding: 10px 100px;
+  padding: 20px 80px;
   border-radius: 10px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
 }
 
 /*Here will be the light mode styles*/
