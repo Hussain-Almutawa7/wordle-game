@@ -210,7 +210,18 @@ button:active {
 }
 
 /*Here will be the light mode styles*/
-body.dark {
+body.light {
     background-color: white;
     color: black;
+}
+
+body.light .box-style {
+    border: solid black 2px;
+    transition: 0.15s;
+}
+
+body.light .instructions-1 {
+  border: 2px solid rgb(80, 80, 80);
+  background-color: rgb(230, 230, 230);
+  color: black;
 }
