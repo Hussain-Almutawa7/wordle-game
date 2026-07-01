@@ -1,11 +1,11 @@
 import { WORDS } from "./words.js";
 
 const secretWords = WORDS.map(word => {
-    return word.toUpperCase()
-})
+    return word.toUpperCase();
+});
 
 let userGuess = "";
-let randomPicker = Math.floor(Math.random() * secretWords.length)
+let randomPicker = Math.floor(Math.random() * secretWords.length);
 let wordCompare = secretWords[randomPicker];
 let numAttempts = 6;
 
@@ -39,42 +39,42 @@ keyRows.forEach(row => {
             if(numAttempts === 0 || gameFlag) return;
             
             if(btn.id === "del") {
-                deleteLetter()
-                return
+                deleteLetter();
+                return;
             }
 
             if(btn.id === "enter") {
-                insertWord(userGuess)
-                return
+                insertWord(userGuess);
+                return;
             }
 
             if(currentBoxIndex === rowEnd) return;
 
-            userGuess += btn.textContent
-            boxes[currentBoxIndex].textContent = btn.textContent
+            userGuess += btn.textContent;
+            boxes[currentBoxIndex].textContent = btn.textContent;
             addLetterStyle(boxes[currentBoxIndex])
-            animate(boxes[currentBoxIndex], "pop")
+            animate(boxes[currentBoxIndex], "pop");
             currentBoxIndex++;
             btn.blur();
-            playSound(keyboardSound)
+            playSound(keyboardSound);
         });
     });
 });
 
 document.addEventListener("keydown", e => {
-    if(numAttempts === 0 || gameFlag) return
+    if(numAttempts === 0 || gameFlag) return;
 
     let key = String(e.key);
 
     if(key === "Backspace") {
-        deleteLetter()
-        return
+        deleteLetter();
+        return;
     }
 
     if(key === "Enter") {
         insertWord(userGuess);
-        e.preventDefault() // btn.blur is enough but just for extra guard
-        playSound(keyboardSound)
+        e.preventDefault(); // btn.blur is enough but just for extra guard
+        playSound(keyboardSound);
         return;
     }
 
@@ -85,12 +85,12 @@ document.addEventListener("keydown", e => {
     if(!found) return;
     if(currentBoxIndex === rowEnd) return;
 
-    userGuess += key.toUpperCase()
-    boxes[currentBoxIndex].textContent = key.toUpperCase()
+    userGuess += key.toUpperCase();
+    boxes[currentBoxIndex].textContent = key.toUpperCase();
     addLetterStyle(boxes[currentBoxIndex])
-    animate(boxes[currentBoxIndex], "pop")
+    animate(boxes[currentBoxIndex], "pop");
     currentBoxIndex++;
-    playSound(keyboardSound)
+    playSound(keyboardSound);
 });
 
 resetBtn.addEventListener("click", () => {
@@ -108,9 +108,9 @@ function deleteLetter() {
     currentBoxIndex--;
     boxes[currentBoxIndex].textContent = "";
     removeLetterStyle(boxes[currentBoxIndex])
-    removeAnimation(boxes[currentBoxIndex], "pop")
+    removeAnimation(boxes[currentBoxIndex], "pop");
     userGuess = userGuess.slice(0, -1);
-    playSound(keyboardSound)
+    playSound(keyboardSound);
 }
 
 
@@ -126,8 +126,8 @@ function insertWord(guess) {
 
         if(arrCount === 0) {
             message.textContent = "Invalid, word is not in list";
-            shakeRow()
-            return
+            shakeRow();
+            return;
         }
     }
 
@@ -135,7 +135,7 @@ function insertWord(guess) {
     
     if (guess !== wordCompare) {
         numAttempts--;
-        message.textContent = `Invalid guess ${numAttempts} attempts left`
+        message.textContent = `Invalid guess ${numAttempts} attempts left`;
 
         currentRow++;
         rowStart = currentRow * 5;
@@ -143,44 +143,40 @@ function insertWord(guess) {
 
         currentBoxIndex = rowStart;
         userGuess = "";
-        playSound(keyboardSound)
+        playSound(keyboardSound);
     }
 
     if(numAttempts === 0 || gameFlag) {
-        popMessage.textContent = `You've lost, Word: ${wordCompare}`;
-        popUp.classList.remove("hidden");
+        waitForAnimatrion(`You've lost, Word: ${wordCompare}`, defeatSound);
         gameFlag = true;
-        playSound(defeatSound)
-        return
+        return;
     }
 
     if(guess === wordCompare) {
-        popMessage.textContent = "You've Won!"
-        popUp.classList.remove("hidden");
-        playSound(victorySound);
+        waitForAnimatrion("You've Won!", victorySound);
         gameFlag = true;
-        return
+        return;
     }
 }
 
 function resetGame() {
-    numAttempts = 6
-    currentBoxIndex = 0
-    userGuess = ""
+    numAttempts = 6;
+    currentBoxIndex = 0;
+    userGuess = "";
     currentRow = 0;
     rowStart = currentRow * 5;
     rowEnd = rowStart + 5;
     gameFlag = false;
 
-    randomPicker = Math.floor(Math.random() * secretWords.length)
+    randomPicker = Math.floor(Math.random() * secretWords.length);
     wordCompare = secretWords[randomPicker];
     message.textContent = "";
     popMessage.textContent = "";
-    popUp.classList.add("hidden")
+    popUp.classList.add("hidden");
 
     boxes.forEach(box => {
         box.classList.remove("correct-letter-place", "correct-letter", "wrong", "box-style");
-        box.textContent = ""
+        box.textContent = "";
     });
 
     keyboard.forEach(btn => {
@@ -193,24 +189,24 @@ function checkWordAndColor(word, correctWord) {
     
     for(let i = 0; i<word.length; i++) {
         setTimeout(() => {
-            let letter = word[i]
+            let letter = word[i];
             let boxIndex = currentRow + i;
 
-            animate(boxes[boxIndex], "flip")
+            animate(boxes[boxIndex], "flip");
 
             if(correctWord[i] === letter) {
                 boxes[boxIndex].classList.add("correct-letter-place");
-                checkKeyboardColor(letter, "correct-letter-place")
-                playSound(successSound)
+                checkKeyboardColor(letter, "correct-letter-place");
+                playSound(successSound);
             } else if(correctWord.includes(letter)) {
-                boxes[boxIndex].classList.add("correct-letter")
-                checkKeyboardColor(letter, "correct-letter")
+                boxes[boxIndex].classList.add("correct-letter");
+                checkKeyboardColor(letter, "correct-letter");
             } else {
                 boxes[boxIndex].classList.add("wrong");
-                checkKeyboardColor(letter, "wrong")
+                checkKeyboardColor(letter, "wrong");
             }
             
-        }, i*300)
+        }, i*300);
     }
 }
 
@@ -231,15 +227,13 @@ function checkKeyboardColor(letter, style) {
                 return;
             }
     
-            if(!btn.classList.contains("correct-letter")) {
-                btn.classList.add(style);
-            }
+            if(!btn.classList.contains("correct-letter")) btn.classList.add(style);
         }
     });
 }
 
 function addLetterStyle(box) {
-    box.classList.add("box-style")
+    box.classList.add("box-style");
 }
 
 function removeLetterStyle(box) {
@@ -247,25 +241,33 @@ function removeLetterStyle(box) {
 }
 
 function animate(box, animation) {
-    box.classList.add(animation)
+    box.classList.add(animation);
 
     box.addEventListener("animationend", () => {
         box.classList.remove(animation);
-    }, {once: true})
+    }, {once: true});
 }
 
 function removeAnimation(box, animation) {
-    box.classList.remove(animation); // Maybe will change it to toggle instead of add and remove more optimal
+    box.classList.remove(animation);
 }
 
 function shakeRow() {
     for(let i = rowStart; i<rowEnd; i++) {
-        animate(boxes[i], "shake")
+        animate(boxes[i], "shake");
     }
-    playSound(errorSound)
+    playSound(errorSound);
 }
 
 function playSound(sound) {
     sound.currentTime = 0;
     sound.play();
+}
+
+function waitForAnimatrion(text, sound) {
+    setTimeout(() => {
+        popMessage.textContent = text;
+        popUp.classList.remove("hidden");
+        playSound(sound);
+    }, 1800);
 }
